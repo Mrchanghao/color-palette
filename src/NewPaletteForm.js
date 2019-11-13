@@ -71,7 +71,7 @@ const useStyles = makeStyles(theme => ({
 
 const NewPaletteForm = (props) => {
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
   const [open, setOpen] = useState(true);
   const [currentColor, setCurrentColor] = useState('teal');
   const [colors, setColors] = useState([]);
