@@ -4,7 +4,7 @@ import mainColor from './mainColor';
 import { generatePalette } from './colorHelper';
 import {Route, Switch} from 'react-router-dom';
 import PaletteList from './PaletteList';
-import SinglePalette from './SinglePalette';
+import SingleColorPalette from './SingleColorPalette';
 import NewPaletteForm from './NewPaletteForm';
 // import 
 
@@ -26,7 +26,7 @@ function App() {
 
       <Route path='/palette/:paletteId/:colorId' 
       exact
-      render={(routeProps) => <SinglePalette
+      render={(routeProps) => <SingleColorPalette
       colorId={routeProps.match.params.colorId}
       {...routeProps} palette={generatePalette(findPalette(routeProps.match.params.paletteId))}
       /> } />

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/styles";
-import styles from "./styles/ColorBoxStyle";
+import styles from "./styles/ColorBoxStyles";
 
-class ColorBox extends Component {
+class ColorBox extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { copied: false };
@@ -25,7 +25,6 @@ class ColorBox extends Component {
       showingFullPalette,
       classes
     } = this.props;
-
     const { copied } = this.state;
     return (
       <CopyToClipboard text={background} onCopy={this.changeCopyState}>

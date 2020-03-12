@@ -33,52 +33,60 @@ class Navbar extends Component {
   }
 
   render() {
-    const {level, changeLevel, showingSlider, classes} = this.props;
-    const {format} = this.state;
+    const { level, changeLevel, showingAllColors, classes } = this.props;
+    const { format } = this.state;
     return (
       <header className={classes.Navbar}>
         <div className={classes.logo}>
-          <Link to='/'>COLOR APP</Link>  
+          <Link to='/'>reactcolorpicker</Link>
         </div>
-        {showingSlider && (
-          <div className='slider-container'>
-          <span>LEVEL</span>
-          <div className={classes.slider}>
-            <Slider 
-            step={100}
-            onAfterChange={changeLevel}
-            defaultValue={level} min={100} max={900} />
+        {showingAllColors && (
+          <div>
+            <span>Level: {level}</span>
+            <div className={classes.slider}>
+              <Slider
+                defaultValue={level}
+                min={100}
+                max={900}
+                step={100}
+                onAfterChange={changeLevel}
+              />
+            </div>
           </div>
-        </div>
         )}
         <div className={classes.selectContainer}>
-          <Select 
-          value={format}
-          onChange={this.handleFormatChange}>
+          <Select value={format} onChange={this.handleFormatChange}>
             <MenuItem value='hex'>HEX - #ffffff</MenuItem>
             <MenuItem value='rgb'>RGB - rgb(255,255,255)</MenuItem>
-            <MenuItem value='rgba'>RGBA - rgb(255,255,255, 1.0)</MenuItem>
+            <MenuItem value='rgba'>RGBA - rgba(255,255,255, 1.0)</MenuItem>
           </Select>
-
         </div>
-        <Snackbar anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}
-        open={this.state.open}
-        autoHideDuration={3000}
-        message={<span id="message-id">format changed to {format}</span>}
-        ContentProps={{
-          "aria-describedby": "message-id"
-        }}
-        onClose={this.closeSnackbar}
-        action={[
-          <IconButton onClick={this.closeSnackbar} 
-          color='inherit' key='close' aria-label='close'>
-            <CloseIcon  />
-          </IconButton>
-        ]}
-        ></Snackbar>
+        <Snackbar
+          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+          open={this.state.open}
+          autoHideDuration={3000}
+          message={
+            <span id='message-id'>
+              Format Changed To {format.toUpperCase()}
+            </span>
+          }
+          ContentProps={{
+            "aria-describedby": "message-id"
+          }}
+          onClose={this.closeSnackbar}
+          action={[
+            <IconButton
+              onClick={this.closeSnackbar}
+              color='inherit'
+              key='close'
+              aria-label='close'
+            >
+              <CloseIcon />
+            </IconButton>
+          ]}
+        />
       </header>
-    )
+    );
   }
 }
-
-export default withStyles(styles)(Navbar)
+export default withStyles(styles)(Navbar);

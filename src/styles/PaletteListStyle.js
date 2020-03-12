@@ -16,7 +16,7 @@ export default {
     alignItems: "flex-start",
     justifyContent: "center",
     /* background by SVGBackgrounds.com */
-    backgroundColor: "#394bad",
+    backgroundColor: "#2e4357",
     // backgroundImage: `url(${bg})`,
     overflow: "scroll"
   },
@@ -43,7 +43,8 @@ export default {
     alignItems: "center",
     color: "white",
     "& a": {
-      color: "white"
+      color: "white",
+      fontSize: '24px'
     }
   },
   palettes: {
