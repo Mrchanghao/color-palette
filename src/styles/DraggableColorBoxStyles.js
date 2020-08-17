@@ -4,7 +4,7 @@ import chroma from "chroma-js";
 const styles = {
   root: {
     width: "20%",
-    height: "25%",
+    height: '25%',
     margin: "0 auto",
     display: "inline-block",
     position: "relative",
