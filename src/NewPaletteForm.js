@@ -7,6 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import Button from "@material-ui/core/Button";
 import MenuIcon from '@material-ui/icons/Menu'
 import styles from './styles/NewPaletteFormStyles';
@@ -90,9 +91,9 @@ class NewPaletteForm extends Component {
 
   render() {
   
-    const { classes, maxColors, palettes } = this.props;
+    const { classes, maxColors, palettes, theme } = this.props;
     const { open, currentColor, newName } = this.state;
-
+    console.log(theme)
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -113,6 +114,7 @@ class NewPaletteForm extends Component {
             <Typography  variant='h6' color='inherit' noWrap>
                 Drawer
               </Typography>
+      
           </Toolbar>
         </AppBar>
           <Drawer
@@ -124,7 +126,12 @@ class NewPaletteForm extends Component {
           >
             <div className={classes.drawerHeader}>
               <IconButton onClick={this.handleDrawerClose}>
-                <ChevronLeftIcon />
+                {theme.direction === 'ltr' ? (
+                  <ChevronLeftIcon />
+                ) : (
+                  <ChevronRightIcon />
+                )}
+                
               </IconButton>
               
             </div>
@@ -133,7 +140,7 @@ class NewPaletteForm extends Component {
               Design New Palette
             </Typography>
             
-            <div>
+            <div >
               <Button variant='contained' color='secondary'>Clear Palette</Button>
               
               <Button variant='contained' color='primary'>random Color</Button>
@@ -189,5 +196,6 @@ class NewPaletteForm extends Component {
     );
   }
 }
+
 
 export default withStyles(styles, { withTheme: true })(NewPaletteForm);
